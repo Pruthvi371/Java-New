@@ -1,7 +1,18 @@
 
 
+/**
+ * @author Pruthvi
+ *
+ */
 public class SentimentAnalyzer {
 	
+	/**
+	 * @param review
+	 * @param featureSet
+	 * @param posOpinionWords
+	 * @param negOpinionWords
+	 * @return
+	 */
 	public static int[] detectProsAndCons(String review, String[][] featureSet, String[] posOpinionWords,
 			String[] negOpinionWords) {
 		
@@ -17,7 +28,8 @@ public class SentimentAnalyzer {
 		return featureOpinions;
 	}
 
-	private static int getOpinionOnFeature(String review, String feature, String[] posOpinionWords, String[] negOpinionWords) {
+	private static int getOpinionOnFeature(String review, String feature, String[] posOpinionWords,
+			String[] negOpinionWords) {
 		
 		int opinion = 0;
 		opinion = checkForWasPhrasePattern(review, feature, posOpinionWords, negOpinionWords);
@@ -25,7 +37,8 @@ public class SentimentAnalyzer {
 		return opinion;
 	}	
 
-	private static int checkForWasPhrasePattern(String review, String feature, String[] posOpinionWords, String[] negOpinionWords) {
+	private static int checkForWasPhrasePattern(String review, String feature, String[] posOpinionWords,
+			String[] negOpinionWords) {
 		
 		int opinion = 0;
 		String pattern = feature + " was ";
@@ -49,8 +62,8 @@ public class SentimentAnalyzer {
 		return opinion; 	
 	}
 	
-	private static int checkForOpinionFirstPattern(String review, String feature
-		,String[] posOpinionWords,String[] negOpinionWords) {
+	private static int checkForOpinionFirstPattern(String review, String feature,
+			String[] posOpinionWords,String[] negOpinionWords) {
 		
 		int opinion = 0;
 		for(int j =0 ; j<posOpinionWords.length;j++) {
@@ -71,5 +84,6 @@ public class SentimentAnalyzer {
 		
 		return opinion;
 	}
+	
 	
 }

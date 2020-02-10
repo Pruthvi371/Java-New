@@ -7,8 +7,10 @@ public class MainMethodClass {
 		
 
 		/*
-		 Below StudentUtil Class output has been printed 
-		 */
+		*
+		*Below StudentUtil Class output has been printed 
+		*
+		 **/
 		
 		int[] studentIdList = {1001,1002};
 		
@@ -23,7 +25,9 @@ public class MainMethodClass {
 		
 		
 		/*
-		 Below code is for printing the output of SentimentAnalyzer Class
+		 * 
+		 *Below code is for printing the output of SentimentAnalyzer Class
+		 *
 		 */
 		
 		
