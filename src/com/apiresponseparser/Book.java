@@ -1,3 +1,4 @@
+package com.apiresponseparser;
 public class Book {		
         private String title;
 		private String author;

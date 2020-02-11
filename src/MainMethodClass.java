@@ -1,5 +1,9 @@
 import java.util.Arrays;
 
+import com.apiresponseparser.APIResponseParser;
+import com.apiresponseparser.Book;
+import com.hospitalmanagementsystem.Nurse;
+
 
 public class MainMethodClass {
 
@@ -79,6 +83,9 @@ public class MainMethodClass {
 
 		Book b = APIResponseParser.parse(response);
 		System.out.println(b.getRatingsCount());
+		
+		
+//		Nurse n = new Nurse();
 
 	}
 

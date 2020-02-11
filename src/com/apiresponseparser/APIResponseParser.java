@@ -1,8 +1,9 @@
+package com.apiresponseparser;
 public class APIResponseParser {
     
 	
      public static Book parse(String response) {
-         Book book = new Book();
+        Book book = new Book();
  		char endRule = '<';
  		
  		String startRule = "<title>";
