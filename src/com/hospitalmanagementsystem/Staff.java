@@ -1,16 +1,16 @@
 package com.hospitalmanagementsystem;
 public class Staff extends User{
 
-	public Staff(String firstName, String lastName, String gender,String email) {
-		super(firstName, lastName, gender,email);
-		// TODO Auto-generated constructor stub
-	}
+	
 	private long staffId;
 	private int yearOfExperience;
 	private String description;
 	private double salary;
 	
-	
+	public Staff(long staffId,String firstName, String lastName, String gender,String email) {
+		super(staffId, firstName, lastName, gender,email);
+		// TODO Auto-generated constructor stub
+	}
 	public long getStaffId() {
 		return staffId;
 	}

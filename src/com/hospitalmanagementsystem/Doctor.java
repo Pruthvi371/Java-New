@@ -1,12 +1,14 @@
 package com.hospitalmanagementsystem;
 public class Doctor extends Staff{
 
-	public Doctor(String firstName, String lastName, String gender, String email) {
-		super(firstName, lastName, gender, email);
-		// TODO Auto-generated constructor stub
-	}
 	private long doctorId;
 	private String specialization;
+	
+	public Doctor(long doctorId,String firstName, String lastName, String gender, String email) {
+		super(doctorId, firstName, lastName, gender, email);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public long getDoctorid() {
 		return doctorId;
 	}

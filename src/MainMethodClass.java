@@ -2,7 +2,10 @@ import java.util.Arrays;
 
 import com.apiresponseparser.APIResponseParser;
 import com.apiresponseparser.Book;
-import com.hospitalmanagementsystem.Nurse;
+import com.hms.billingcomponent.Billing;
+import com.hms.billingcomponent.HealthInsurancePlan;
+import com.hms.billingcomponent.PlatinumPlan;
+import com.hospitalmanagementsystem.Patient;
 
 
 public class MainMethodClass {
@@ -10,11 +13,7 @@ public class MainMethodClass {
 	public static void main(String[] args) {
 		
 
-		/*
-		*
-		*Below StudentUtil Class output has been printed 
-		*
-		 **/
+//		Below StudentUtil Class output has been printed 
 		
 		int[] studentIdList = {1001,1002};
 		
@@ -28,13 +27,9 @@ public class MainMethodClass {
 		
 		
 		
-		/*
-		 * 
-		 *Below code is for printing the output of SentimentAnalyzer Class
-		 *
-		 */
 		
-		
+//		Below code is for printing the output of SentimentAnalyzer Class
+		 
 //		String review = "Haven't been here in years! Fantastic service and the food was delicious! Definetly will be a frequent flyer! Francisco was very attentive".toLowerCase();
 		
 		String review = "Sorry OG, but you just lost some loyal customers. Horrible service, no smile or greeting just attitude. The breadsticks were stale and burnt, appetizer was cold and the food came out before the salad.".toLowerCase();
@@ -53,9 +48,8 @@ public class MainMethodClass {
 		System.out.println("Opinions on Features: " + Arrays.toString(featureOpinions));
 		
 		
-		/*
-		 * Top print output of ApiResponseParser Class exercise
-		 */
+//		 Top print output of ApiResponseParser Class exercise
+		 
 		String response = "<work>" + 
                 "<id type=\"integer\">2361393</id>" +
                 "<books_count type=\"integer\">813</books_count>" +
@@ -84,8 +78,16 @@ public class MainMethodClass {
 		Book b = APIResponseParser.parse(response);
 		System.out.println(b.getRatingsCount());
 		
+
+//		Code for com.hms.billingcomponent
 		
-//		Nurse n = new Nurse();
+		HealthInsurancePlan insurancePlan = new PlatinumPlan();
+		System.out.println(insurancePlan.getCoverage()+"adsffsc");
+		Patient patient = new Patient();
+		patient.setInsurancePlan(insurancePlan);
+		double [] payments = Billing.computePaymentAmount(patient, 1000);
+		
+		System.out.println(payments[0]+" and "+payments[1]);
 
 	}
 
