@@ -9,7 +9,6 @@ public class Staff extends User{
 	
 	public Staff(long staffId,String firstName, String lastName, String gender,String email) {
 		super(staffId, firstName, lastName, gender,email);
-		// TODO Auto-generated constructor stub
 	}
 	public long getStaffId() {
 		return staffId;
