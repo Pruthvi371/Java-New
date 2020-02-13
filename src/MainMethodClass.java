@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 import com.apiresponseparser.APIResponseParser;
 import com.apiresponseparser.Book;
+import com.flightreservation.TicketReservation;
 import com.hms.billingcomponent.Billing;
 import com.hms.billingcomponent.BlueCrossBlueShield;
 import com.hms.billingcomponent.HealthInsurancePlan;
@@ -9,11 +10,13 @@ import com.hms.billingcomponent.InsuranceBrand;
 import com.hms.billingcomponent.PlatinumPlan;
 import com.hospitalmanagementsystem.Patient;
 import com.hospitalmanagementsystem.User;
+import com.studentutil.computegpa.StudentUtil;
+import com.treesetandcomparator.SetDemo;
 
 
 public class MainMethodClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, Exception {
 
 
 		//		Below StudentUtil Class output has been printed 
@@ -82,7 +85,7 @@ public class MainMethodClass {
 		System.out.println(b.getRatingsCount());
 
 
-		//		Code for com.hms.billingcomponent
+//		Code for com.hms.billingcomponent
 
 		HealthInsurancePlan insurancePlan = new PlatinumPlan();
 		Patient patient = new Patient();
@@ -100,6 +103,19 @@ public class MainMethodClass {
 		staff.setInsurancePlan(insurancePlan1);
 		System.out.println("Premium Amount Of Staff is "+((PlatinumPlan) insurancePlan1).computeMonthlyPremium(5000,56,true));
 
+		TicketReservation tr = new TicketReservation();
+
+		System.out.println(tr.getConfirmedList().size());
+		System.out.println(tr.bookFlight("fn","lastName", 21, "MALE", "Business","as123"));
+
+		System.out.println(tr.getConfirmedList().size());
+		System.out.println(tr.getConfirmedList().get(0).getConfirmationNumber());
+		System.out.println(tr.cancel("as123"));
+		
+		System.out.println(tr.getConfirmedList().get(0).getConfirmationNumber());
+		
+		SetDemo sd = new SetDemo();
+//			sd.hashSetDemo();
 
 	}
 
