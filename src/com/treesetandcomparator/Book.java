@@ -1,6 +1,6 @@
 package com.treesetandcomparator;
 
-public class Book implements Comparable {
+public class Book implements Comparable<Object> {
 	private String title;
 	private String author;
 	private int year;

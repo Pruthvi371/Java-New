@@ -23,7 +23,7 @@ public class SetDemo {
 		System.out.println("set2: " +  set2);
 	}
 	
-	public static Set<Book> treeSetDemo(Comparator comparator) {
+	public Set<Book> treeSetDemo(Comparator<Object> comparator) {
 		Book book1 = new Book("Harry Potter", "J.K.Rowling", 1997);
 		Book book2 = new Book("Harry Potter", "J.K.Rowling", 1997);
 		Book book3 = new Book("Walden", "Henry David Thoreau", 1854);

@@ -1,12 +1,10 @@
 package com.jvm.unittester;
 
 public class Reflection {
-
-
-	public Reflection() {
-
-	}
 	
+	public Reflection() {
+		
+	}
 	public void go() {
 	}
 	public boolean testA() {

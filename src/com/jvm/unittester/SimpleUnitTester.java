@@ -4,35 +4,30 @@ import java.lang.reflect.Method;
 
 public class SimpleUnitTester {
 	
-
-
-	@SuppressWarnings({ "rawtypes", "unused", "deprecation" })
-	public int execute(Class clazz) throws Exception {
+	public static int execute(Class<?> clazz) throws Exception {
 		int failedCount = 0;
-
-		Object object = null;
-		try {
-			object = clazz.newInstance();
-		} 	catch (InstantiationException e) {
-			System.out.println("Cannot Instantiate  ");
-		}  
-			catch (IllegalAccessException e) {
-			System.out.println("Cannot access..  ");
-		}
-		
+		Reflection reflection = new Reflection();	
 		for(Method m: clazz.getDeclaredMethods()) {
 			String methodName = m.getName();
 			if(methodName.startsWith("test")) {
-				@SuppressWarnings("unchecked")
-				Method m1 = clazz.getDeclaredMethod("methodName");
-				Object ob = m1.invoke(clazz);
-				Boolean b = ((Boolean) ob).booleanValue();
-				if(b==false)
+				if(m.invoke(reflection).equals(false))
 					failedCount++;
 			}
 		}
-
 		return failedCount;
+	}
+	
+	
+	public static void main (String args []) throws Exception {
+		
+		Class<?> clazz = null;
+		try {
+			clazz = Class.forName("com.jvm.unittester.Reflection");
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+		System.out.println("Failed Counts are  "+execute(clazz));
+		
 	}
 
 }

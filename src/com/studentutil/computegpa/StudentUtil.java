@@ -67,5 +67,17 @@ public class StudentUtil {
 		return getStudentsByGpa;
 	}
 
+	public static void main(String[] args) throws ClassNotFoundException, Exception {
+
+		int[] studentIdList = {1001,1002};
+
+		char[][] studentsGrades = {{'A','B'},{'A'}};
+
+		double[] d =calculateGPA(studentIdList, studentsGrades);
+		System.out.println(d[0]);
+
+		int [] i = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrades);
+		System.out.println(i[0]);
+	}
 
 }
