@@ -45,9 +45,16 @@ public class SetDemo {
 	    return books;
 	}
 	
-//	public static void main(String[] args) {
-//		//hashSetDemo();
-//		treeSetDemo();
-//	}	
+	public static void main(String[] args) throws ClassNotFoundException, Exception {
+
+
+		
+		SetDemo sd = new SetDemo();
+		sd.treeSetDemo(new PubDateAscComparator());
+//		sd.treeSetDemo(new PubDateDescComparator());
+		
+		//			sd.hashSetDemo();
+
+	}	
 	
 }

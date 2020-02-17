@@ -1,3 +1,4 @@
+package com.sentimentanalyser;
 import java.util.Arrays;
 
 /**
@@ -89,11 +90,9 @@ public class SentimentAnalyzer {
 
 
 
-		//		String review = "Haven't been here in years! Fantastic service and the food was delicious!"
-//		        +"Definetly will be a frequent flyer! Francisco was very attentive".toLowerCase();
+				String review = "Haven't been here in years! Fantastic service and the food was delicious! Definetly will be a frequent flyer! Francisco was very attentive".toLowerCase();
 
-		String review = "Sorry OG, but you just lost some loyal customers. Horrible service, no smile or greeting just attitude."
-				+ " The breadsticks were stale and burnt, appetizer was cold and the food came out before the salad.".toLowerCase();
+//		String review = "Sorry OG, but you just lost some loyal customers. Horrible service, no smile or greeting just attitude.The breadsticks were stale and burnt, appetizer was cold and the food came out before the salad.".toLowerCase();
 
 		String[][] featureSet = { 
 				{ "ambiance", "ambience", "atmosphere", "decor" },

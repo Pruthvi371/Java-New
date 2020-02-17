@@ -74,10 +74,10 @@ public class StudentUtil {
 		char[][] studentsGrades = {{'A','B'},{'A'}};
 
 		double[] d =calculateGPA(studentIdList, studentsGrades);
-		System.out.println(d[0]);
+		System.out.println("GPA is  "+d[0]);
 
 		int [] i = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrades);
-		System.out.println(i[0]);
+		System.out.println("The id of the student with gpa between 3.2 and 3.5 is  "+i[0]);
 	}
 
 }
