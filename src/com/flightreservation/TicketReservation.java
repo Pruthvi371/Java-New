@@ -102,7 +102,8 @@ public class TicketReservation {
 		System.out.println("hiiii  "+tr.bookFlight("fn","lastName", 21, "MALE", "Business","as123"));
 
 		System.out.println(tr.confirmedList.size());
-		System.out.println("helllllllo  "+tr.cancel("as123"));
+		
+		System.out.println("The Status of the ticket cancellation is  "+tr.cancel("as123"));
 		
 	}
 	

@@ -1,16 +1,53 @@
 package com.treesetandcomparator;
 
+import java.util.Comparator;
+
 public class Book implements Comparable<Object> {
-	
+
 	private String title;
 	private String author;
 	private int year;
-	
-	// Your anonymous class should be defined in the following statement
-	// public static final Comparator<Book> TITLE_COMPARATOR = 
-	
-	// Your public static member class PubDateComparators can go here!
-	
+
+	public static final Comparator<Object> TITLE_COMPARATOR = new TitleComparator();
+
+
+	public static class PubDateComparators {
+
+		public static class PubDateAscComparator implements  Comparator<Object> {
+
+			@Override
+			public int compare(Object o1, Object o2) {
+
+				int title = TITLE_COMPARATOR.compare(o1, o2);
+				int year = ((Book) o1).getYear()-((Book) o2).getYear();
+
+				if (year == 0) { 
+					return ((title == 0) ? year : title); 
+				} else { 
+					return year; 
+				} 
+			}
+
+		}
+
+		public static class PubDateDescComparator implements Comparator<Object> {
+
+			@Override
+			public int compare(Object o1, Object o2) {
+
+				int title = TITLE_COMPARATOR.compare(o1, o2);
+				int year = ((Book) o2).getYear()-((Book) o1).getYear();
+
+				if (year == 0) { 
+					return ((title == 0) ? year : title); 
+				} else { 
+					return year; 
+				} 
+			}
+
+		}
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -26,7 +63,7 @@ public class Book implements Comparable<Object> {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	
+
 	public int getYear() {
 		return year;
 	}
@@ -34,7 +71,7 @@ public class Book implements Comparable<Object> {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
+
 	public Book(String title, String author, int year) {
 		super();
 		this.title = title;
@@ -80,7 +117,7 @@ public class Book implements Comparable<Object> {
 			return false;
 		return true;
 	}
-	
+
 	/*public int hashCode() {
 		return title.hashCode();
 	}
@@ -88,9 +125,17 @@ public class Book implements Comparable<Object> {
 	public boolean equals(Object o) {
 		return (year == (((Book)o).getYear())) && (author.equals((((Book)o).getAuthor())));
 	}*/	
-	
+
 	public int compareTo(Object book) {
-		 return getTitle().compareTo(((Book)book).getTitle()); // utilizing String’s compareTo
+		return getTitle().compareTo(((Book)book).getTitle()); // utilizing String’s compareTo
 	}
-	
+
+}
+
+class TitleComparator implements Comparator<Object> {    
+
+	public int compare(Object o1, Object o2) {
+		return ((Book) o1).getTitle().compareTo(((Book) o2).getTitle());
+	}   
+
 }

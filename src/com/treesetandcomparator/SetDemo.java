@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.treesetandcomparator.Book.PubDateComparators.PubDateAscComparator;
+import com.treesetandcomparator.Book.PubDateComparators.PubDateDescComparator;
+
 public class SetDemo {
 	
 	public static void hashSetDemo() {
@@ -55,8 +58,10 @@ public class SetDemo {
 	public static void main(String[] args) throws ClassNotFoundException, Exception {
 		
 		SetDemo sd = new SetDemo();
-		sd.treeSetDemo(new PubDateAscComparator());
-		sd.treeSetDemo(new PubDateDescComparator());
+		PubDateAscComparator asc = new Book.PubDateComparators.PubDateAscComparator();
+		PubDateDescComparator dsc = new Book.PubDateComparators.PubDateDescComparator();
+		sd.treeSetDemo( asc);
+		sd.treeSetDemo(dsc);
 		
 		//			sd.hashSetDemo();
 
