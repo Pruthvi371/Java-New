@@ -1,6 +1,7 @@
 package com.studentutil.computegpa;
 
 @SuppressWarnings("serial")
+
 public class MissingGradeException  extends Exception {
 
 	private long studentId;
@@ -12,5 +13,4 @@ public class MissingGradeException  extends Exception {
 	public MissingGradeException( long studentId) {
 		this.studentId = studentId;
 	}
-
 }

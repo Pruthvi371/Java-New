@@ -1,9 +1,15 @@
 package com.treesetandcomparator;
 
 public class Book implements Comparable<Object> {
+	
 	private String title;
 	private String author;
 	private int year;
+	
+	// Your anonymous class should be defined in the following statement
+	// public static final Comparator<Book> TITLE_COMPARATOR = 
+	
+	// Your public static member class PubDateComparators can go here!
 	
 	public String getTitle() {
 		return title;

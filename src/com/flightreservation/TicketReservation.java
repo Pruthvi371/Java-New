@@ -35,10 +35,11 @@ public class TicketReservation {
 			confirmedList.add(passenger);
 			return true;
 		}
-		else if(confirmedList.size()==CONFIRMEDLIST_LIMIT && waitingList.size()<=WAITINGLIST_LIMIT){
+		else if(confirmedList.size()==CONFIRMEDLIST_LIMIT && waitingList.size()<WAITINGLIST_LIMIT){
 			waitingList.add(passenger);
 			return true;
 		}
+		
 		return false; 
 	}
 
@@ -57,41 +58,27 @@ public class TicketReservation {
 		
 		Iterator<Passenger> iterator = confirmedList.iterator();
 		Iterator<Passenger> iterator1 = waitingList.iterator();
-		System.out.println("qerwef  "+iterator.hasNext());
-
 
 		while (iterator.hasNext()) {
-        	if(iterator.next().getConfirmationNumber() == confirmationNumber) {
-        		removePassenger(iterator, confirmationNumber);
-        		if(!waitingList.isEmpty()) {
+        	if((iterator.next().getConfirmationNumber().equals(confirmationNumber)) && waitingList.isEmpty()) {
+        		return removePassenger(confirmedList.iterator(), confirmationNumber);
+        	}
+        	else if((iterator.next().getConfirmationNumber().equals(confirmationNumber)) && !(waitingList.isEmpty())) {
+        		if(removePassenger(confirmedList.iterator(), confirmationNumber)) {
         			confirmedList.add(waitingList.poll());
-        			}
-        			System.out.println("adsdsfs   "+confirmedList.size());
         			return true;
+        		}
+        	}
+        	else {
+        		while(iterator1.hasNext()) {
+        			if(iterator1.next().getConfirmationNumber().equals(confirmationNumber)) {
+        				return removePassenger(waitingList.iterator(), confirmationNumber);
+        			}
+        		}
         	}
         }	
-		
-			
-//			System.out.println("adsdsfaadss"+waitingList.poll());
-//			System.out.println("fffadsdsfs"+confirmedList.size());
-			
-		
-//		else if(checkForTheConfirmationNumber(confirmationNumber, iterator1)) {
-//			removePassenger(iterator1, confirmationNumber);
-//			return true;
-//		}
 		return false;	
 
-	}
-
-	private boolean checkForTheConfirmationNumber(String confirmationNumber, Iterator<Passenger> iterator) {
-		
-		while (iterator.hasNext()) {
-        	if(iterator.next().getConfirmationNumber() == confirmationNumber) {
-        		return true;
-        	}
-        }	
-		return false;
 	}
 
 	/**      
@@ -100,12 +87,10 @@ public class TicketReservation {
 	 */     
 	public boolean removePassenger(Iterator<Passenger> iterator, String confirmationNumber) {
 		while (iterator.hasNext()) {
-			System.out.println("wow   " +iterator.next().getAge());	
-	        	if(iterator.next().getConfirmationNumber() == confirmationNumber) {
-	        		
+	        	if(iterator.next().getConfirmationNumber().equals(confirmationNumber)) {
 	        		iterator.remove();
-	        		
-	        	}return true;
+	        		return true;
+	        	}
 		 }
 		return false;         
 	}
@@ -114,14 +99,10 @@ public class TicketReservation {
 
 		TicketReservation tr = new TicketReservation();
 
-		System.out.println(tr.getConfirmedList().size());
-//		System.out.println(tr.bookFlight("fn","lastName", 21, "MALE", "Business","as123"));
-//
-//		System.out.println(tr.getConfirmedList().size());
-//		System.out.println(tr.getConfirmedList().get(0).getConfirmationNumber());
-//		System.out.println(tr.cancel("as123"));
-		
-//		System.out.println(tr.getConfirmedList().get(0).getConfirmationNumber());
+		System.out.println("hiiii  "+tr.bookFlight("fn","lastName", 21, "MALE", "Business","as123"));
+
+		System.out.println(tr.confirmedList.size());
+		System.out.println("helllllllo  "+tr.cancel("as123"));
 		
 	}
 	

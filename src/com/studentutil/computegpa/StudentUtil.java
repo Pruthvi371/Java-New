@@ -24,19 +24,19 @@ public class StudentUtil {
 					gpaSum+=3;
 				if (studentsGrades[i][j] == 'C')
 					gpaSum+=2;
-				else if (studentsGrades[i][j] == ' ') {
-					throw new MissingGradeException(studentIdList[i]);
-                }
+				if (studentsGrades[i][j] == ' ') {
+						throw new MissingGradeException(studentIdList[i]);
+	                }
+				
 			}
 
 			studentsGpa[i] = gpaSum/totGrads;
-
 		}
 
 		return studentsGpa;
 	}
 
-	public static int[] getStudentsByGPA(double lower, double higher, int[] studentIdList, char[][] studentsGrades) throws InvalidDataException {
+	public static int[] getStudentsByGPA(double lower, double higher, int[] studentIdList, char[][] studentsGrades) throws Throwable {
 
 		if( (lower < 0) || (higher < 0) || (lower > higher) ) 
 			return null;
@@ -44,13 +44,13 @@ public class StudentUtil {
 		int reqstudno = 0;
 		double[] studGpa = new double[studentIdList.length];
 		
-		try {
-			studGpa = calculateGPA(studentIdList, studentsGrades);
-		} catch (MissingGradeException e) {
-			System.out.println("Grade for the id "+e.getStudentId()+" is missing");
-			e.printStackTrace();
-			throw new InvalidDataException(); 
-		}
+			try {
+				studGpa = calculateGPA(studentIdList, studentsGrades);
+			}  catch (MissingGradeException e) {
+				e.printStackTrace();
+				System.out.println("error at  "+e.getMessage());
+				throw new InvalidDataException().getCause();
+			}
 
 		for(int i = 0 ; i<studentIdList.length ; i++) {
 			if(lower<= studGpa[i] && studGpa[i]<= higher)
@@ -73,10 +73,17 @@ public class StudentUtil {
 
 		char[][] studentsGrades = {{'A','B'},{'A'}};
 
-		double[] d =calculateGPA(studentIdList, studentsGrades);
-		System.out.println("GPA is  "+d[0]);
+		double[] d = null;
+		
+		d = calculateGPA(studentIdList, studentsGrades);
+		System.out.println("GPA for id "+studentIdList[0]+" is "+d[0]);
 
-		int [] i = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrades);
+		int[] i = null;
+		try {
+			i = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrades);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		System.out.println("The id of the student with gpa between 3.2 and 3.5 is  "+i[0]);
 	}
 

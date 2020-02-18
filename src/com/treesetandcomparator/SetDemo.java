@@ -29,15 +29,21 @@ public class SetDemo {
 		Book book3 = new Book("Walden", "Henry David Thoreau", 1854);
 		Book book4 = new Book("Effective Java", "Joshua Bloch", 2008);
 		Book book5 = new Book("The Last Lecture", "Randy Pausch", 2008);
-			  
-		Set<Book> books = new TreeSet<>();
+		Set<Book> books;
+		
+		if (comparator == null) {
+			books = new TreeSet<>();
+		} 
+		else {
+			books = new TreeSet<>(comparator);
+		}
+		
 		books.add(book1);
 		books.add(book2);
 		books.add(book3);
 		books.add(book4);
 		books.add(book5);
 		
-	      
 	    for (Book book : books) {
 	    	System.out.println(book);
 	    }		
@@ -45,13 +51,12 @@ public class SetDemo {
 	    return books;
 	}
 	
+	
 	public static void main(String[] args) throws ClassNotFoundException, Exception {
-
-
 		
 		SetDemo sd = new SetDemo();
 		sd.treeSetDemo(new PubDateAscComparator());
-//		sd.treeSetDemo(new PubDateDescComparator());
+		sd.treeSetDemo(new PubDateDescComparator());
 		
 		//			sd.hashSetDemo();
 
