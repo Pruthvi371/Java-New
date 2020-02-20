@@ -14,6 +14,8 @@ public class TicketReservation {
 	private List<Passenger> confirmedList = new ArrayList<>();
 	private Deque<Passenger> waitingList = new ArrayDeque<>();
 
+	Iterator<Passenger> iterator = confirmedList.iterator();
+	Iterator<Passenger> iterator1 = waitingList.iterator();
 	// This getter is used only by the junit test case. 
 	
 	public List<Passenger> getConfirmedList() {
@@ -56,8 +58,7 @@ public class TicketReservation {
 	 */     
 	public boolean cancel(String confirmationNumber) {
 		
-		Iterator<Passenger> iterator = confirmedList.iterator();
-		Iterator<Passenger> iterator1 = waitingList.iterator();
+
 
 		while (iterator.hasNext()) {
         	if((iterator.next().getConfirmationNumber().equals(confirmationNumber)) && waitingList.isEmpty()) {

@@ -69,7 +69,7 @@ public class Flight implements Comparable<Flight> {
 	
 	@Override
 	public int compareTo(Flight flight) {
-		return id;
+		return (getId()-flight.getId());
 		
 	}
 	
