@@ -14,21 +14,10 @@ public class TicketReservation {
 	private List<Passenger> confirmedList = new ArrayList<>();
 	private Deque<Passenger> waitingList = new ArrayDeque<>();
 
-	Iterator<Passenger> iterator = confirmedList.iterator();
-	Iterator<Passenger> iterator1 = waitingList.iterator();
-	// This getter is used only by the junit test case. 
-	
 	public List<Passenger> getConfirmedList() {
 		return confirmedList;     
 	}
 
-	/**      
-	 * Returns true if passenger could be added into either confirmedList or      
-	 * waitingList. Passenger will be added to waitingList only if confirmedList      
-	 * is full.      
-	 *      
-	 * Return false if both passengerList & waitingList are full      
-	 */     
 	public boolean bookFlight(String firstName, String lastName, int age, String gender, String travelClass,String confirmationNumber) {
 		
 		Passenger passenger = new Passenger(firstName, lastName, age, gender, travelClass,
@@ -45,20 +34,10 @@ public class TicketReservation {
 		return false; 
 	}
 
-	/**      
-	 * Removes passenger with the given confirmationNumber. Passenger could be      
-	 * in either confirmedList or waitingList. The implementation to remove the      
-	 * passenger should go in removePassenger() method and removePassenger method      
-	 * will be tested separately by the uploaded test scripts.      
-
-	 * If passenger is in confirmedList, then after removing that passenger, the      
-	 * passenger at the front of waitingList (if not empty) must be moved into      
-	 * passengerList. Use poll() method (not remove()) to extract the passenger      
-	 * from waitingList.      
-	 */     
 	public boolean cancel(String confirmationNumber) {
 		
-
+		Iterator<Passenger> iterator = confirmedList.iterator();
+		Iterator<Passenger> iterator1 = waitingList.iterator();
 
 		while (iterator.hasNext()) {
         	if((iterator.next().getConfirmationNumber().equals(confirmationNumber)) && waitingList.isEmpty()) {
@@ -81,11 +60,7 @@ public class TicketReservation {
 		return false;	
 
 	}
-
-	/**      
-	 * Removes passenger with the given confirmation number.      
-	 * Returns true only if passenger was present and removed. Otherwise, return false.      
-	 */     
+ 
 	public boolean removePassenger(Iterator<Passenger> iterator, String confirmationNumber) {
 		while (iterator.hasNext()) {
 	        	if(iterator.next().getConfirmationNumber().equals(confirmationNumber)) {
@@ -100,11 +75,8 @@ public class TicketReservation {
 
 		TicketReservation tr = new TicketReservation();
 
-		System.out.println("hiiii  "+tr.bookFlight("fn","lastName", 21, "MALE", "Business","as123"));
-
-		System.out.println(tr.confirmedList.size());
-		
-		System.out.println("The Status of the ticket cancellation is  "+tr.cancel("as123"));
+		System.out.println("has Ticket booked? =>  "+tr.bookFlight("fn","lastName", 21, "MALE", "Business","as123"));
+		System.out.println("Has ticket cancelled "+tr.cancel("a123"));
 		
 	}
 	
