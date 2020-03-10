@@ -1,6 +1,7 @@
 package com.dataandtimeapi;
 
 import java.time.LocalDateTime;
+import java.time.*;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,19 @@ public class FlightFinder {
         
         // Step 1: Construct ZonedDateTime objects to represent User-specified time interval when flights depart
 
+		LocalTime time = LocalTime.of(9, 00, 00);
+		System.out.println("\ntime -- hr: " + time.getHour());
+
+		// LocalDate
+		LocalDate gameStartDate = LocalDate.of(2017, Month.JULY, 03);
+
+		// LocalDateTime
+		LocalDateTime gameStartTime = LocalDateTime.of(gameStartDate, time);
+		System.out.println("gameStartTime: " + gameStartTime);
+
+		// TimeZone ==> ZoneId
+		ZonedDateTime zonedGameStartTime = ZonedDateTime.of(gameStartTime, ZoneId.of("Europe/London"));
+		System.out.println("zonedGameStartTime: " + zonedGameStartTime);
                    // Your code
 
         // Step 2: Find departing flights at departureCity
