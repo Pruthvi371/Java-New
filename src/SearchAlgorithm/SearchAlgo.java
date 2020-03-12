@@ -4,13 +4,25 @@ package SearchAlgorithm;
 public class SearchAlgo {
 
 	boolean searchAlgo(int[][] a, int lo, int hi, int key) {
-		if (lo == hi  && a[lo][hi] != key) {
-			return false;
-		} else if (a[lo][hi] == key) {
+		 int row = a.length;
+		 int col = a[0].length;
+		 if (a[lo][hi] == key) {
 			return true;
-		} else if (a[lo][hi] > key) {
+		} 
+		 else if(a[0][0]>key ) {
+			return false;
+		}
+		 else if(a[row-1][col-1]<key) {
+			 return false;
+		 }
+		else if (lo == row && hi == col-1  && a[lo][hi] != key) {
+			return false;
+		} 
+		
+		else if (a[lo][hi] > key) {
 			return searchAlgo(a, lo, hi - 1, key);
-		} else if (a[lo][hi] < key) {
+		} 
+		else if (a[lo][hi] < key) {
 			return searchAlgo(a, lo + 1, hi, key);
 		}
 		return false;
@@ -23,11 +35,15 @@ public class SearchAlgo {
 
 	public static void main(String[] args) {
 
-		int[][] a = { { 0, 1, 3, 9, 14 }, { 2, 4, 7, 10, 16 }, { 5, 8, 11, 12, 18 }, { 6, 13, 15, 19, 20 },
-				{ 17, 21, 23, 25, 29 } };
+		int[][] a = { { 0, 1, 3, 9, 14 }, 
+					{ 2, 4, 7, 10, 16 }, 
+					{ 5, 8, 11, 12, 18 },
+					{ 6, 13, 15, 19, 20 },
+					{ 17, 21, 23, 25, 29 } };
+		
 
 		SearchAlgo sa = new SearchAlgo();
-		System.out.println(sa.search(a, 16));
+		System.out.println(sa.search(a, 17));
 
 	}
 
